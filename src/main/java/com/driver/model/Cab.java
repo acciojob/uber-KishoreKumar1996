@@ -8,8 +8,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Cab")
-@Data
-@AllArgsConstructor
 public class Cab {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,4 +31,28 @@ public class Cab {
 
     @OneToOne(mappedBy = "cab",cascade = CascadeType.ALL)
     private Driver driver;
+
+    public int getCabId() {
+        return CabId;
+    }
+
+    public void setCabId(int cabId) {
+        CabId = cabId;
+    }
+
+    public int getPerKMHr() {
+        return perKMHr;
+    }
+
+    public void setPerKMHr(int perKMHr) {
+        this.perKMHr = perKMHr;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 }

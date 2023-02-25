@@ -9,8 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name="Driver")
-@Data
-@AllArgsConstructor
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
