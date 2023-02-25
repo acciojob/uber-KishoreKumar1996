@@ -7,45 +7,53 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Cab")
+@Table(name = "Cab")
 public class Cab {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int CabId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    private int perKMHr;
-    private boolean seatBooked;
+    private int perKmRate;
 
-    public boolean isSeatBooked() {
-        return seatBooked;
-    }
+    private boolean available;
 
-    public void setSeatBooked(boolean seatBooked) {
-        this.seatBooked = seatBooked;
-    }
-
+    @OneToOne(mappedBy = "cab", cascade = CascadeType.ALL)
+    private Driver driver;
 
 
     public Cab() {
+
     }
 
-    @OneToOne(mappedBy = "cab",cascade = CascadeType.ALL)
-    private Driver driver;
-
-    public int getCabId() {
-        return CabId;
+    public Cab(int id, int perKmRate, boolean available) {
+        this.id = id;
+        this.perKmRate = perKmRate;
+        this.available = available;
     }
 
-    public void setCabId(int cabId) {
-        CabId = cabId;
+    public int getId() {
+        return id;
     }
 
-    public int getPerKMHr() {
-        return perKMHr;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setPerKMHr(int perKMHr) {
-        this.perKMHr = perKMHr;
+    public int getPerKmRate() {
+        return perKmRate;
+    }
+
+    public void setPerKmRate(int perKmRate) {
+        this.perKmRate = perKmRate;
+    }
+
+    public boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public Driver getDriver() {
