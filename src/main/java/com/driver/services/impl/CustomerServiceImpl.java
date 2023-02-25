@@ -68,8 +68,6 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 		if (driver == null) throw new Exception("No cab available!");
-
-
 		// finding trip details
 		TripBooking bookedTrip = new TripBooking();
 		Customer customer = customerRepository2.findById(customerId).get();
